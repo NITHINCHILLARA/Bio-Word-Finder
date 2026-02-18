@@ -1,0 +1,27 @@
+html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Human Biotechnology Word Finder</title>
+</head>
+<body>
+    <h2>Search Human Biotechnology Term</h2>
+
+    <form method="POST">
+        <input type="text" name="keyword" placeholder="Enter term">
+        <button type="submit">Search</button>
+    </form>
+
+    {% if results is not none %}
+        <h3>Results</h3>
+        {% for _, row in results.iterrows() %}
+            <p><b>{{row.term_name}}</b></p>
+            <p>{{row.definition}}</p>
+            <p>Genes: {{row.genes}}</p>
+            <p>Diseases: {{row.diseases}}</p>
+            <p>Pathways: {{row.pathways}}</p>
+            <hr>
+        {% endfor %}
+    {% endif %}
+</body>
+</html>
